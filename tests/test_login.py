@@ -6,4 +6,5 @@ def test_valid_login(driver):
     login_page.login("standard_user", "secret_sauce")
     assert "inventory.html" in driver.current_url
     #Updated login page
+    #bugfix
     
