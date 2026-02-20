@@ -12,3 +12,4 @@ def test_add_item_to_cart(driver):
 
     assert "cart.html" in driver.current_url
     assert "Sauce Labs Backpack" in driver.page_source
+    #addtocart
