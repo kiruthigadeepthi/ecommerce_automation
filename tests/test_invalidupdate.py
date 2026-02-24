@@ -11,7 +11,7 @@ def test_invalid_update_checkout(driver):
 
     # Step 2: Add product to cart
     inventory_page = InventoryPage(driver)
-    inventory_page.add_to_cart("Sauce Labs Bolt T-Shirt")
+    inventory_page.add_to_cart()
     inventory_page.go_to_cart()
     time.sleep(2)
 

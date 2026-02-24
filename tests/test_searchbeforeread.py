@@ -9,11 +9,11 @@ def test_search_before_read(driver):
 
     # Step 2: Search for product
     inventory_page = InventoryPage(driver)
-    product = inventory_page.search_product("Sauce Labs Backpack")
+    product = inventory_page.search_product("Sauce Labs Bolt T-Shirt")
 
     # Step 3: Read product details
     assert product is not None, "Product not found"
     details = inventory_page.read_product_details(product)
 
     # Step 4: Verify details
-    assert "Sauce Labs Backpack" in details
+    assert "Sauce Labs Bolt T-Shirt" in details
