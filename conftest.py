@@ -1,8 +1,13 @@
-import pytest
+import pytest,allure
 from selenium import webdriver
 #import logging
 import time
 
+
+
+@pytest.fixture(autouse=True)
+def attach_environment():
+    allure.attach("Browser: Chrome\nOS: Windows", name="Environment Info")
 @pytest.fixture
 def driver():
     #options = webdriver.Chrome()

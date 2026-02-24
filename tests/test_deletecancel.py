@@ -14,7 +14,7 @@ def test_delete_cancellation(driver):
 
     # Step 2: Add product to cart
     inventory_page = InventoryPage(driver)
-    inventory_page.add_product("sauce-labs-backpack")
+    inventory_page.add_to_cart("sauce-labs-backpack")
     inventory_page.go_to_cart()
 
     cart_page = CartPage(driver)

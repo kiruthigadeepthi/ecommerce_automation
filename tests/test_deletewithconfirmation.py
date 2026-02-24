@@ -12,7 +12,7 @@ def test_delete_with_confirmation(driver):
 
     # Step 2: Add product to cart
     inventory_page = InventoryPage(driver)
-    inventory_page.add_product("sauce-labs-backpack")
+    inventory_page.add_to_cart("sauce-labs-backpack")
     inventory_page.go_to_cart()
 
     # Step 3: Trigger DELETE (remove item)

@@ -11,7 +11,7 @@ def test_crud_operations(driver):
     login_page.login("standard_user", "secret_sauce")
 
     inventory_page = InventoryPage(driver)
-    inventory_page.add_backpack_to_cart()
+    inventory_page.add_to_cart()
     inventory_page.go_to_cart()
 
     cart_page = CartPage(driver)

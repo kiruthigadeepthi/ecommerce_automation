@@ -10,7 +10,7 @@ def test_negative_checkout_missing_fields(driver):
     login_page.login("standard_user", "secret_sauce")
 
     inventory_page = InventoryPage(driver)
-    inventory_page.add_product("sauce-labs-backpack")
+    inventory_page.add_to_cart("sauce-labs-backpack")
     inventory_page.go_to_cart()
 
     checkout_page = CheckoutPage(driver)
