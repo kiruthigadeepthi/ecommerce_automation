@@ -10,8 +10,8 @@ def test_duplicate_product_creation(driver):
 
     # Step 2: Add product twice
     inventory_page = InventoryPage(driver)
-    inventory_page.add_to_cart("Sauce Labs Bolt T-Shirt")
-    inventory_page.add_to_cart("Sauce Labs Bolt T-Shirt")  # attempt duplicate
+    inventory_page.add_to_cart()
+    inventory_page.add_to_cart()  # attempt duplicate
     driver.save_screenshot("Duplicate.png")
     inventory_page.go_to_cart()
 
@@ -21,4 +21,4 @@ def test_duplicate_product_creation(driver):
 
     # Step 4: Verify duplicate handling
     # SauceDemo only allows one instance of each product in cart
-    assert items.count("Sauce Labs Backpack") == 1
+    assert items.count("Sauce Labs Bolt T-Shirt") == 1

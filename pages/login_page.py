@@ -10,8 +10,8 @@ class LoginPage:
 
     def login(self, username, password):
         self.driver.find_element(By.ID, "user-name").send_keys(username)
-        time.sleep(3)
+        time.sleep(1)
         self.driver.find_element(By.ID, "password").send_keys(password)
-        time.sleep(3)
+        time.sleep(1)
         self.driver.find_element(By.ID, "login-button").click()
-        time.sleep(3)
+        time.sleep(1)

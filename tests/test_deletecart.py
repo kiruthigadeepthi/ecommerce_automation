@@ -15,8 +15,8 @@ def test_delete_cart_item(driver):
 
     # Step 3: Delete (remove item)
     cart_page = CartPage(driver)
-    cart_page.remove_backpack()
+    cart_page.remove_product()
 
     # Step 4: Verify deletion
     items = cart_page.get_cart_items()
-    assert "Sauce Labs Backpack" not in items
+    assert "Sauce Labs Bolt T-Shirt" not in items

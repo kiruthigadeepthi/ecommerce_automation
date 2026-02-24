@@ -5,9 +5,9 @@ class CartPage:
         self.driver = driver
 
     def get_cart_items(self):
-        items = self.driver.find_element(By.LINK_TEXT, "Sauce Labs Bolt T-Shirt")
-        return items
+        items = self.driver.find_elements(By.CLASS_NAME,"inventory_item_name")
+        return [item.text for item in items]
         #lists=list.append()
            
-    def remove_backpack(self):
-        self.driver.find_element(By.ID, "remove-sauce-labs-backpack").click()
+    def remove_product(self):
+        self.driver.find_element(By.ID,"remove-sauce-labs-bolt-t-shirt").click()

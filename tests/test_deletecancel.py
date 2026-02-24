@@ -14,20 +14,20 @@ def test_delete_cancellation(driver):
 
     # Step 2: Add product to cart
     inventory_page = InventoryPage(driver)
-    inventory_page.add_to_cart("sauce-labs-backpack")
+    inventory_page.add_to_cart()
     inventory_page.go_to_cart()
 
     cart_page = CartPage(driver)
     items_before = cart_page.get_cart_items()
-    assert "Sauce Labs Backpack" in items_before
+    assert "Sauce Labs Bolt T-Shirt" in items_before
 
     # Step 3: Trigger delete (confirmation popup appears)
-    driver.find_element(By.ID, "remove-sauce-labs-backpack").click()
+    driver.find_element(By.ID, "remove-sauce-labs-bolt-t-shirt").click()
 
     # Step 4: Cancel deletion
     alert = Alert(driver)
-    alert.dismiss()   # simulate clicking "Cancel"
+    alert.dismiss() 
 
     # Step 5: Verify item still exists
     items_after = cart_page.get_cart_items()
-    assert "Sauce Labs Backpack" in items_after
+    assert "Sauce Labs Bolt T-Shirt" in items_after

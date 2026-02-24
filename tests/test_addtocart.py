@@ -7,7 +7,7 @@ def test_add_item_to_cart(driver):
     login_page.login("standard_user", "secret_sauce")
 
     inventory_page = InventoryPage(driver)
-    inventory_page.add_to_cart("Sauce Labs Bolt T-Shirt")
+    inventory_page.add_to_cart()
     inventory_page.go_to_cart()
 
     #assert "inventory.html" in driver.current_url

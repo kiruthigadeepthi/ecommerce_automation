@@ -16,20 +16,20 @@ def test_crud_operations(driver):
 
     cart_page = CartPage(driver)
     items = cart_page.get_cart_items()
-    assert "Sauce Labs Backpack" in items
+    assert "Sauce Labs Bolt T-Shirt" in items
 
     # Step 2: READ → Verify product is in cart
     assert len(items) == 1
-    assert items[0] == "Sauce Labs Backpack"
+    assert items[0] == "Sauce Labs Bolt T-Shirt"
 
     # Step 3: UPDATE → Remove backpack, add another product
-    cart_page.remove_backpack()
+    cart_page.remove_product()
     inventory_page.driver.get("https://www.saucedemo.com/inventory.html")
     inventory_page.driver.find_element(By.ID,"add-to-cart-sauce-labs-bike-light").click()
     inventory_page.go_to_cart()
     items = cart_page.get_cart_items()
     assert "Sauce Labs Bike Light" in items
-    assert "Sauce Labs Backpack" not in items
+    assert "Sauce Labs Bolt T-Shirt" not in items
 
     # Step 4: DELETE → Remove all items from cart
     inventory_page.driver.find_element(By.ID,"remove-sauce-labs-bike-light").click()
