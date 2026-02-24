@@ -4,14 +4,13 @@ class InventoryPage:
     def __init__(self, driver):
         self.driver = driver
 
-    def add_backpack_to_cart(self):
-        self.driver.find_element(By.ID, "add-to-cart-sauce-labs-backpack").click()
+    def add_to_cart(self,product):
+        self.driver.find_element(By.LINK_TEXT, product).click()
+        #self.driver.find_element(By.ID,"add-to-cart-sauce-labs-bolt-t-shirt").click()
 
     def go_to_cart(self):
         self.driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
 
-    def add_product(self, product_id):
-        self.driver.find_element(By.ID, f"add-to-cart-{product_id}").click()
 
     def remove_product(self, product_id):
         self.driver.find_element(By.ID, f"remove-{product_id}").click()

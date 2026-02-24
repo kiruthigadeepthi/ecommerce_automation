@@ -10,8 +10,9 @@ def test_duplicate_product_creation(driver):
 
     # Step 2: Add product twice
     inventory_page = InventoryPage(driver)
-    inventory_page.add_product("sauce-labs-backpack")
-    inventory_page.add_product("sauce-labs-backpack")  # attempt duplicate
+    inventory_page.add_to_cart("Sauce Labs Bolt T-Shirt")
+    inventory_page.add_to_cart("Sauce Labs Bolt T-Shirt")  # attempt duplicate
+    driver.save_screenshot("Duplicate.png")
     inventory_page.go_to_cart()
 
     # Step 3: Read cart items
