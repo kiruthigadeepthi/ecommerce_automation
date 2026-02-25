@@ -7,11 +7,8 @@ def test_read_all_items_with_pagination(driver):
     login_page.load()
     login_page.login("standard_user", "secret_sauce")
 
-    # Step 2: Initialize pagination
     pagination_page = PaginationPage(driver)
     all_items = []
-
-    # Step 3: Loop through pages
     while True:
         items = pagination_page.get_items_on_page()
         all_items.extend(items)
@@ -19,6 +16,6 @@ def test_read_all_items_with_pagination(driver):
         if not pagination_page.go_to_next_page():
             break
 
-    # Step 4: Verify items collected
+  
     assert len(all_items) > 0
     assert "Sauce Labs Backpack" in all_items
