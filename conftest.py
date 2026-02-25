@@ -2,6 +2,7 @@ import pytest,allure
 from selenium import webdriver
 #import logging
 import time
+from pytest_html import extras
 
 
 
@@ -19,6 +20,36 @@ def driver():
     yield driver
     driver.quit()
 
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    # Run all other hooks to get the report object
+    outcome = yield
+    report = outcome.get_result()
+
+    # Only act on test call failures
+    if report.when == "call" and report.failed:
+        driver = item.funcargs.get("driver", None)
+        if driver:
+            screenshot_path = f"screenshots/{item.name}.png"
+            driver.save_screenshot(screenshot_path)
+            # Attach screenshot to HTML report
+            if hasattr(report, "extra"):
+                report.extra.append(extras.image(screenshot_path))
+
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    report = outcome.get_result()
+
+    # Add severity marker info
+    severity = None
+    for marker in item.iter_markers():
+        if marker.name.startswith("severity_"):
+            severity = marker.name.replace("severity_", "").capitalize()
+
+    if severity:
+        if hasattr(report, "extra"):
+            report.extra.append(extras.text(f"Severity: {severity}"))
 """
 @pytest.fixture(params=["chrome", "firefox", "edge"])
 def driver(request):

@@ -2,9 +2,10 @@ from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
 from pages.checkout_page import CheckoutPage
 import time
+import pytest
 from selenium.webdriver.common.by import By
 
-
+@pytest.mark.severity_major
 def test_checkout_flow(driver):
     login_page = LoginPage(driver)
     login_page.load()
