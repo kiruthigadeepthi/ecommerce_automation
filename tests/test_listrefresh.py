@@ -10,19 +10,19 @@ def test_list_refresh_after_delete(driver):
 
     # Step 2: Add product to cart
     inventory_page = InventoryPage(driver)
-    inventory_page.add_product("sauce-labs-backpack")
+    inventory_page.add_to_cart()
     inventory_page.go_to_cart()
 
     cart_page = CartPage(driver)
     items_before = cart_page.get_cart_items()
-    assert "Sauce Labs Backpack" in items_before
+    assert "Sauce Labs Bolt T-Shirt" in items_before
 
     # Step 3: Delete product
-    inventory_page.remove_product("sauce-labs-backpack")
+    cart_page.remove_product()
 
     # Step 4: Refresh list (re-read cart items)
     items_after = cart_page.get_cart_items()
 
     # Step 5: Validate list refresh
-    assert "Sauce Labs Backpack" not in items_after
+    assert "Sauce Labs Bolt T-Shirt" not in items_after
     assert len(items_after) == 0
